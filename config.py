@@ -13,6 +13,7 @@ TELEGRAM_CHAT_ID   = "BURAYA_KENDI_CHAT_IDINI_YAPISTIR"
 # ============ TAKIP EDILECEK COINLER ============
 # MEXC Futures sembol formati: BTC_USDT (alt cizgi ile)
 SYMBOLS = [
+    # Top 10
     "BTC_USDT",
     "ETH_USDT",
     "SOL_USDT",
@@ -22,7 +23,31 @@ SYMBOLS = [
     "DOGE_USDT",
     "AVAX_USDT",
     "LINK_USDT",
-    "POL_USDT",   # MATIC yeni adi POL
+    "POL_USDT",
+    # Layer1 / Layer2
+    "ARB_USDT",
+    "OP_USDT",
+    "SUI_USDT",
+    "APT_USDT",
+    "TON_USDT",
+    "NEAR_USDT",
+    "ATOM_USDT",
+    # DeFi
+    "UNI_USDT",
+    "AAVE_USDT",
+    "INJ_USDT",
+    "LDO_USDT",
+    # Meme
+    "SHIB_USDT",
+    "PEPE_USDT",
+    "WIF_USDT",
+    "BONK_USDT",
+    # Diger
+    "TRX_USDT",
+    "ICP_USDT",
+    "FIL_USDT",
+    "RNDR_USDT",
+    "FET_USDT",
 ]
 
 # ============ ZAMAN DILIMI ============
