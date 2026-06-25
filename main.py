@@ -108,21 +108,26 @@ def scan_once(history: dict) -> int:
 
         # Indikatorleri ekle
         df = indicators.add_all_indicators(df, config)
-
-        # Sinyal degerlendir
+# Sinyal değerlendir
         sig = strategy.evaluate(symbol, df)
         if sig:
             print_signal_console(sig)
-            ok = telegram_bot.send_message(telegram_bot.format_signal(sig))
+            msg = telegram_bot.format_signal(sig)
+            ok = telegram_bot.send_message(msg, parse_mode=None)
+            
             if ok:
                 print(f"  {C.G}[✓] Telegram'a gonderildi{C.END}")
-            # CSV'ye kaydet
+            else:
+                print(f"  {C.R}[X] Telegram mesaji gonderilemedi{C.END}")
+            
+            # Sinyal her halükarda varsa (Telegram gitse de gitmese de) CSV'ye kaydedilir
             sig_id = tracker.log_signal(sig, config.LEVERAGE_SUGGESTION)
             print(f"  {C.C}[+] signals.csv'ye kaydedildi (id={sig_id}){C.END}")
             history[symbol] = datetime.utcnow().isoformat()
             save_history(history)
             found += 1
         else:
+            # Sinyal yoksa burası çalışır
             last = df.iloc[-1]
             print(f"  {C.W}[ ] {symbol:<12} sinyal yok  "
                   f"(close={last['close']:.4f}  RSI={last['rsi']:.1f}){C.END}")
